@@ -31,7 +31,12 @@ int main(){
     printf("Escreva o número de pontos turísticos da Carta 1: ");
     scanf("%d", &turismo);
 
-    printf("Carta 1:\nEstado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %.2fkm²\nPIB: %.2f bilhões de reais\nNúmero de Pontos: %d", estado, codcarta, cidade, popula, area, pib, turismo);
+    float densidade1 = (float) popula / area; // Casting de float para declaramento explicito e evitar erros inesperados
+    float per1 = (pib * 1000000000) / (float) popula; //pib multiplicado em um bilhão para o calculo de PIB per Capita ir corretamente.
+
+    printf("Carta 1:\nEstado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %.2fkm²\nPIB: %.2f bilhões de reais\n"
+        "Número de Pontos: %d\nDensidade Populacional: %.2f hab/km²\nPIB per Capita: %.2f reais\n", estado, codcarta, cidade, popula, 
+        area, pib, turismo, densidade1, per1);
 
     printf("Escreva o Estado da Carta 2: ");
     scanf(" %c", &estado);
@@ -57,7 +62,12 @@ int main(){
     printf("Escreva o número de pontos turísticos da Carta 2: ");
     scanf("%d", &turismo);
 
-    printf("Carta 2:\nEstado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %.2fkm²\nPIB: %.2f bilhões de reais\nNúmero de Pontos: %d", estado, codcarta, cidade, popula, area, pib, turismo);
+    float densidade2 = (float) popula / area;
+    float per2 = (pib * 1000000000) / (float) popula;
+
+    printf("Carta 2:\nEstado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %.2fkm²\nPIB: %.2f bilhões de reais\n"
+        "Número de Pontos: %d\nDensidade Populacional: %.2f hab/km²\nPIB per Capita: %.2f reais\n", estado, codcarta, cidade, popula, 
+        area, pib, turismo, densidade2, per2);
 
     return 0;
 
