@@ -3,7 +3,7 @@
 
 int main(){
 
-    char estado, codcarta[4], cidade[20]; // Variáveis sendo atribuidas para suas respectivas áreas
+    char estado, codcarta[4], cidade1[20], cidade2[20]; // Variáveis sendo atribuidas para suas respectivas áreas
     int turismo1, turismo2;
     unsigned long int popula1, popula2;
     float area1, area2, pib1, pib2;
@@ -18,8 +18,8 @@ int main(){
     getchar(); // Usado para zerar o buffer e fazer com que o fgets não pule de linha
 
     printf("Escreva o Nome da Cidade da Cara 1: ");
-    fgets(cidade, 20, stdin);
-    cidade[strcspn(cidade, "\n")] = 0;
+    fgets(cidade1, 20, stdin);
+    cidade1[strcspn(cidade1, "\n")] = 0;
 
     printf("Escreva a população da Carta 1: ");
     scanf("%lu", &popula1);
@@ -37,10 +37,6 @@ int main(){
     float per1 = (pib1 * 1000000000) / (float) popula1; //pib multiplicado em um bilhão para o calculo de PIB per Capita ir corretamente.
     unsigned long int poder1 = popula1 + area1 + pib1 + turismo1 + per1 - densidade1;
 
-    printf("Carta 1:\nEstado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %lu\nÁrea: %.2fkm²\nPIB: %.2f bilhões de reais\n"
-        "Número de Pontos: %d\nDensidade Populacional: %.2f hab/km²\nPIB per Capita: %.2f reais\nSuper Poder: %lu\n", estado, codcarta, 
-        cidade, popula1, area1, pib1, turismo1, densidade1, per1, poder1);
-
     printf("Escreva o Estado da Carta 2: ");
     scanf(" %c", &estado);
 
@@ -50,8 +46,8 @@ int main(){
     getchar();
 
     printf("Escreva o Nome da Cidade da Cara 2: ");
-    fgets(cidade, 20, stdin);
-    cidade[strcspn(cidade, "\n")] = 0;
+    fgets(cidade2, 20, stdin);
+    cidade2[strcspn(cidade2, "\n")] = 0;
 
     printf("Escreva a população da Carta 2: ");
     scanf("%lu", &popula2);
@@ -69,13 +65,15 @@ int main(){
     float per2 = (pib2 * 1000000000) / (float) popula2;
     unsigned long int poder2 = popula2 + area2 + pib2 + turismo2 + per2 - densidade2;
 
-    printf("Carta 2:\nEstado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %lu\nÁrea: %.2fkm²\nPIB: %.2f bilhões de reais\n"
-        "Número de Pontos: %d\nDensidade Populacional: %.2f hab/km²\nPIB per Capita: %.2f reais\nSuper Poder: %lu\n", estado, codcarta, 
-        cidade, popula2, area2, pib2, turismo2, densidade2, per2, poder2);
-
-
-
-    printf("Comparação das Cartas (Número 1 para Carta 1 e Número 0 para Carta 2)\nPopulação: venceu (%d)\nÁrea: venceu (%d)\nPIB: venceu (%d)\nPontos Turísticos: venceu (%d)\nDensidade Populacional: venceu (%d)\nPIB per Capita: venceu (%d)\nSuper Poder: venceu (%d)\n", (popula1 >= popula2), (area1 >= area2), (pib1 >= pib2), (turismo1 >= turismo2), (densidade1 <= densidade2), (pib1 >= pib2), (poder1 >= poder2));
+    if(poder1 > poder2){//if com o resultado da comparação de poder
+        printf("Carta 1 - %s: %d de Super Poder\n", cidade1, poder1); 
+        printf("Carta 2 - %s: %d de Super Poder\n", cidade2, poder2);
+        printf("Carta 1: %s venceu!!!", cidade1);
+    }else{
+        printf("Carta 1 - %s: %d de Super Poder\n", cidade1, poder1);
+        printf("Carta 2 - %s: %d de Super Poder\n", cidade2, poder2);
+        printf("Carta 1: %s venceu!!!", cidade2);
+    }
 
     return 0;
 
